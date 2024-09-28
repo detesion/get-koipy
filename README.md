@@ -8,7 +8,7 @@ koipy是一个Telegram 节点测速、连通性测试机器人，同时提供对
 
 ## 功能特性
 
-- 多配置文件参数的配置
+- 配置文件参数的配置
     * license
     * bot-token
     * api-id
