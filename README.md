@@ -33,7 +33,7 @@ apt install wget curl ca-certificates
 
 * 下载并运行脚本
 ```
-
+wget https://raw.githubusercontent.com/TeamPGM/PagerMaid-Pyro/development/utils/docker.sh -O docker.sh && chmod +x docker.sh && bash docker.sh
 ```
 
 
