@@ -1,0 +1,305 @@
+license: 
+network: # 网络
+  httpProxy: "http://host:port" # http代理，如果设置的话，bot会用这个拉取订阅
+  socks5Proxy: "socks5://host:port" # socks5代理， bot的代理在下面bot那一栏填
+  userAgent: "ClashMetaForAndroid/2.8.9.Meta Mihomo/0.16" # UA设置，影响订阅获取
+bot:
+  bot-token: null # bot的token, 首次启动必填
+  api-id:  # telegram的 api_id 可选，想用自己的api可以填，默认内置
+  api-hash:  # telegram的 api_hash 可选， 可选，想用自己的api可以填，默认内置
+  proxy: socks5://127.0.0.1:11112 # socks5代理
+  ipv6: false #是否使用ipv6连接
+  antiGroup: false
+  strictMode: false # 严格模式，在此模式下，bot的所有按钮只能触发消息对话的那个人点，否则是全体用户权限均可点击。默认false
+  bypassMode: false # 是否将bot设置为旁路模式，设置为旁路模式后，bot原本内置的所有指令都将失效。取而代之仅生效下面bot.commands配置的指令。关于旁路模式有什么用，请查阅在线文档。
+  parseMode: MARKDOWN # bot的文本解析模式，可选值如下： [DEFAULT, MARKDOWN, HTML, DISABLED]
+  scriptText: "" # 进度条文本
+  analyzeText: ""  # 分析进度条文本
+  speedText: "" # 速度进度条文本
+  bar: "=" # 进度条
+  bleft: "[" # 进度条
+  bright: "]" # 进度条
+  bspace: "  " # 进度条
+  inviteGroup: [] # invite指令权限覆写群组白名单，写上对应群组id，那个群所有人都将可以使用/invite指令，默认只能用户权限使用。 群组id以-100开头
+  cacheTime: 60 # 订阅缓存的最大时长，默认60秒。一个订阅不会重复拉取，在60秒内使用缓存值，超过60秒重新获取。
+  inviteBlacklistURL: [] # 邀请测试里禁止测试的URL链接远程更新地址，多个用逗号隔开。样例： https://raw.githubusercontent.com/koipy-org/koihub/master/proxypool_url.txt
+  inviteBlacklistDomain: [] # 邀请测试里禁止测试包含的域名远程更新地址，多个用逗号隔开。样例：https://raw.githubusercontent.com/koipy-org/koihub/master/proxypool_domain.txt
+  commands: # bot的指令设置
+image:
+  speedFormat: "byte/decimal" # 速度结果绘图格式，共有以下可用值： ["byte/binary", "byte/decimal", "bit/binary", "bit/decimal"] 具体解释请查看文档
+  color: # 颜色配置
+    background: # 背景颜色
+      inbound: # 入口背景
+        alpha: 255 # 透明度
+        end-color: '#ffffff' # 透明度
+        label: 0 # 值
+        name: '' # 名称随意
+        value: '#ffffff'
+      outbound: #出口背景
+        alpha: 255
+        end-color: '#ffffff'
+        label: 0
+        name: ''
+        value: '#ffffff'
+      script: # 连通性测试图
+        alpha: 255
+        end-color: '#ffffff'
+        label: 0
+        name: ''
+        value: '#ffffff'
+      scriptTitle: # 连通性图标题栏颜色
+        alpha: 255
+        end-color: '#ffffff'
+        label: 0
+        name: ''
+        value: '#EAEAEA'
+      speed: # 速度图内容颜色
+        alpha: 255
+        end-color: '#ffffff'
+        label: 0
+        name: ''
+        value: '#ffffff'
+      speedTitle: # 速度图标题栏颜色
+        alpha: 255
+        end-color: '#ffffff'
+        label: 0
+        name: ''
+        value: '#EAEAEA'
+      topoTitle: # 拓扑图标题栏颜色
+        alpha: 255
+        end-color: '#ffffff'
+        label: 0
+        name: ''
+        value: '#EAEAEA'
+    delay: # 延迟配色
+    - label: 1 # 延迟的值， >1 就采用这个颜色 单位ms
+      name: '1'
+      value: '#e4f8f9'
+    - label: 50 # 延迟的值， >50 就采用这个颜色 单位ms
+      name: '2'
+      value: '#e4f8f9'
+    - label: 100 # 以此类推
+      name: '2'
+      value: '#bdedf1'
+    - label: 200
+      name: '3'
+      value: '#96e2e8'
+    - label: 300
+      name: '4'
+      value: '#78d5de'
+    - label: 500
+      name: '5'
+      value: '#67c2cf'
+    - label: 1000
+      name: '6'
+      value: '#61b2bd'
+    - label: 2000
+      name: '7'
+      value: '#466463'
+    - label: 0
+      name: '8'
+      value: '#8d8b8e'
+    ipriskHigh: # ip风险非常高的颜色
+      alpha: 255
+      end-color: '#ffffff'
+      label: 0
+      name: ''
+      value: '#ffffff'
+    ipriskLow: # ip风险最低的颜色
+      alpha: 255
+      end-color: '#ffffff'
+      label: 0
+      name: ''
+      value: '#ffffff'
+    ipriskMedium: # ip风险其他颜色同理
+      alpha: 255
+      end-color: '#ffffff'
+      label: 0
+      name: ''
+      value: '#ffffff'
+    ipriskVeryHigh:
+      alpha: 255
+      end-color: '#ffffff'
+      label: 0
+      name: ''
+      value: '#ffffff'
+    na: # na的颜色
+      alpha: 255
+      end-color: '#8d8b8e'
+      label: 0
+      name: ''
+      value: '#8d8b8e'
+    'no': # 解锁失败的颜色
+      alpha: 255
+      end-color: '#ee6b73'
+      label: 0
+      name: ''
+      value: '#ee6b73'
+    outColor: []
+    speed: # 速度值颜色
+    - label: 0.0
+      name: '1'
+      value: '#fae0e4'
+      alpha: 255
+      end_color: '#ffffff'
+    - label: 0.0
+      name: '2'
+      value: '#f7cad0'
+      alpha: 255
+      end_color: '#ffffff'
+    - label: 25.0
+      name: '3'
+      value: '#f9bec7'
+      alpha: 255
+      end_color: '#ffffff'
+    - label: 50.0
+      name: '4'
+      value: '#ff85a1'
+      alpha: 255
+      end_color: '#ffffff'
+    - label: 100.0
+      name: '5'
+      value: '#ff7096'
+      alpha: 255
+      end_color: '#ffffff'
+    - label: 150.0
+      name: '6'
+      value: '#ff5c8a'
+      alpha: 255
+      end_color: '#ffffff'
+    - label: 200.0
+      name: '7'
+      value: '#ff477e'
+      alpha: 255
+      end_color: '#ffffff'
+    wait:
+      alpha: 255
+      end-color: '#dcc7e1'
+      label: 0
+      name: ''
+      value: '#dcc7e1'
+    warn:
+      alpha: 255
+      end-color: '#fcc43c'
+      label: 0
+      name: ''
+      value: '#fcc43c'
+    'yes':
+      alpha: 255
+      end-color: '#bee47e'
+      label: 0
+      name: ''
+      value: '#bee47e'
+  compress: false # 是否压缩
+  emoji: # emoji是否开启，建议开启，就这样设置
+    enable: true
+    source: TwemojiLocalSource
+  endColorsSwitch: false
+  font: ./resources/alibaba-Regular.ttf #字体路径
+runtime: # 测速任务可以动态调整的配置
+  entrance: true # 是否显示入口IP段
+  interval: 10 # 暂时无用
+  ipstack: true # 是否启用双栈检测
+  localip: false # 暂时无用
+  nospeed: false # 暂时无用
+  pingURL: https://www.gstatic.com/generate_204 # 延迟测试地址
+  speedFiles: # 速度测试的大文件下载地址，暂时只会读取第一个地址
+  - https://dl.google.com/dl/android/studio/install/3.4.1.0/android-studio-ide-183.5522156-windows.exe
+  speedNodes: 300 # 最大测速节点数量
+  speedThreads: 4 # 暂时无用
+  output: image # 输出类型，目前支持 image 和 json 两种
+  realtime: false # 是否实时渲染测试结果
+scriptConfig:
+  scripts: # 脚本载入
+    - type: gofunc # 表示是miaospeed的内置实现
+      name: "TEST_PING_RTT" # 特殊保留名称，当设置为这些特殊保留值时会覆写程序内部的默认配置，更多的特殊保留值请参阅这里: https://github.com/airportr/miaospeed/blob/master/interfaces/matrix.go#L3
+      rank: -100 # 排序
+    - type: gojajs
+      name: "Youtube"
+      rank: 0
+      content: "resources/scripts/builtin/youtube.js" # 也可以指定一个文件路径
+    - type: gojajs
+      name: "Disney+"
+      rank: 1
+      content: "resources/scripts/builtin/disney+.js"
+    - type: gojajs
+      name: "OpenAI"
+      rank: 2
+      content: "resources/scripts/builtin/openai.js"
+    - type: gojajs
+      name: "Tiktok"
+      rank: 3
+      content: "resources/scripts/builtin/tiktok.js"
+    - type: gojajs
+      name: "维基百科"
+      rank: 4
+      content: "resources/scripts/builtin/wikipedia.js"
+    - type: gojajs
+      name: "Claude"
+      rank: 5
+      content: "resources/scripts/builtin/Claude.js"
+    - type: gojajs
+      name: "Bilibili"
+      rank: 6
+      content: "resources/scripts/builtin/bilibili.js"
+    - type: gojajs
+      name: "微软Copilot"
+      rank: 7
+      content: "resources/scripts/builtin/copilot.js"
+    - type: gojajs
+      name: "Spotify"
+      rank: 8
+      content: "resources/scripts/builtin/spotify.js"
+    - type: gojajs
+      name: "Viu"
+      rank: 9
+      content: "resources/scripts/builtin/viu.js"
+    - type: gojajs
+      name: "IP风险"
+      rank: 11
+      content: "resources/scripts/builtin/iprisk.js"
+    - type: gojajs
+      name: "DNS区域"
+      rank: 10
+      content: "resources/scripts/builtin/dns.js"
+slaveConfig: # 后端配置
+  default: '' # 默认后端设置，未实现
+  showID: true # 是否在选择后端页面展示slaveid
+  slaves: # 后端列表，注意是数组类型
+    - type: miaospeed # 固定值，目前只这个支持
+      id: "localmiaospeed" # 后端id
+      token: "ZfffaQ4/E-7S" # 连接密码
+      address: "127.0.0.1:8765" # 后端地址
+      path: "/" # websocket的连接路径，只有路径正确才能正确连接，请填写复杂的路径，防止路径被爆破。可以有效避免miaospeed服务被网络爬虫扫描到.
+      skipCertVerify: true # 跳过证书验证，如果你不知道在做什么，请写此默认值
+      tls: true # 启用加密连接，如果你不知道在做什么，请写此默认值
+      invoker: "1114514" # bot调用者，请删掉此行或者随便填一个字符串
+      buildtoken: "MIAOKO4|580JxAo049R|GEnERAl|1X571R930|T0kEN" # 默认编译token  如果你不知道在做什么，请写此默认值
+      comment: "本地miaospeed后端" # 后端备注，显示在bot页面的
+      hidden: false # 是否隐藏此后端
+      option: # 可选配置，请注意部分值设置得太大会不生效，比如taskTimeout设置成10000以上，就不会生效。
+        downloadDuration: 8 # 测试时长
+        downloadThreading: 4 # 测速线程
+        downloadURL: https://dl.google.com/dl/android/studio/install/3.4.1.0/android-studio-ide-183.5522156-windows.exe # 测速文件
+        pingAddress: https://cp.cloudflare.com/generate_204 # 延迟测试地址
+        pingAverageOver: 3 # ping多少次取平均
+        stunURL: udp://stunserver2024.stunprotocol.org:3478 # STUN地址，测udp连通性的，格式: udp://host:port
+        taskRetry: 3 # 后端任务重试，单位秒(s)
+        taskTimeout: 2500 # 后端任务超时判定时长，单位毫秒(ms)
+        dnsServer: [] # 后端指定dns服务器，解析节点域名时会用到。例子: ["119.29.29.29:53", "223.5.5.5:53"]
+        apiVersion: 1 # 后端Api版本，设置为 0或者1可以适配旧版后端兼容性，默认为2，如无必要请勿修改。如果要对接其他分支miaospeed请设置为0或者1
+subconverter: # 订阅转换
+  address: 127.0.0.1:25500 # 地址
+  enable: false # 是否启用
+  tls: false # 是否启用安全加密HTTPS协议，如果不知道的话， https 开头就设为true，否则默认false
+substore:
+  enable: true # 是否启用
+  backend: "http://127.0.0.1:3000/download/sub?target=ClashMeta" # 后端地址，bot会自动解析成 http://127.0.0.1:3000/download/sub
+  ua: "" # 自定义UA，留空则使用默认UA
+  autoDeploy: false # 是否自动部署sub-store，默认true，会自动下载sub-store后端和对应的javascrip运行时(bun)
+translation: # 翻译语言包
+  lang: zh-CN # 启用选项
+  resources: # 翻译包在哪加载
+    zh-CN: ./resources/i18n/zh-CN.yml # 键随便填，值填文件路径
+log-level: INFO # 日志等级，共有以下日志等级： [DEBUG, INFO, WARNING, ERROR, CRITICAL, DISABLE]，越后的等级日志越严重，DISABLE会禁用日志，日志存放在logs目录下
+user: [] # 用户权限名单，不用自己设
