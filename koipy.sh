@@ -12,7 +12,7 @@ setup_environment () {
         echo "创建了 koipy 文件夹。"
     fi
 
-    wget -O ./koipy/config.yaml https://gist.githubusercontent.com/detesion/e12e6a92a916f0b5a65766dab82d851a/raw/koipy-config
+    wget -O ./koipy/config.yaml https://raw.githubusercontent.com/detesion/get-koipy/refs/heads/main/config.example.yaml
     echo "下载 config.yaml 文件。"
 }
 
