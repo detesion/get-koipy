@@ -1,4 +1,4 @@
-# koipy测速tgbot一键安装脚本
+# koipy测速TGbot一键安装脚本
 
 koipy是一个Telegram 节点测速、连通性测试机器人，同时提供对接miaospeed后端的开源实现。 koipy是fulltclash的下游分支。
 
