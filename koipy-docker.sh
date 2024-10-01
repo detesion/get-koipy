@@ -122,9 +122,15 @@ configure_bot () {
             sed -i.bak "s|^\(      path: \).*|\1$slave_path|" ./koipy/config.yaml
             sed -i.bak "s|^\(      comment: \).*|\1\"$slave_comment\"|" ./koipy/config.yaml
             # 更新 substore 配置
+            # 更新 substore 配置
             if grep -q "substore:" ./koipy/config.yaml; then
-                sed -i.bak "s|^\(    enable: \).*|\1$substore_enable|" ./koipy/config.yaml
-                sed -i.bak "s|^\(    autoDeploy: \).*|\1$substore_autoDeploy|" ./koipy/config.yaml
+                awk -v enable="$substore_enable" -v autoDeploy="$substore_autoDeploy" '
+                BEGIN { found = 0 }
+                /^  substore:/ { found = 1; print; next }
+                found && /^    enable:/ { print "    enable: " enable; found = 0; next }
+                found && /^    autoDeploy:/ { print "    autoDeploy: " autoDeploy; found = 0; next }
+                { print }
+                ' ./koipy/config.yaml > ./koipy/config.tmp && mv ./koipy/config.tmp ./koipy/config.yaml
             else
                 echo -e "substore:\n  enable: $substore_enable\n  autoDeploy: $substore_autoDeploy" >> ./koipy/config.yaml
             fi
