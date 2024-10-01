@@ -124,15 +124,16 @@ configure_bot () {
             # 更新 substore 配置
             # 更新 substore 配置
             if grep -q "substore:" ./koipy/config.yaml; then
-                awk -v enable="$substore_enable" -v autoDeploy="$substore_autoDeploy" '
-                BEGIN { found = 0 }
-                /^  substore:/ { found = 1; print; next }
-                found && /^    enable:/ { print "    enable: " enable; found = 0; next }
-                found && /^    autoDeploy:/ { print "    autoDeploy: " autoDeploy; found = 0; next }
-                { print }
-                ' ./koipy/config.yaml > ./koipy/config.tmp && mv ./koipy/config.tmp ./koipy/config.yaml
+                sed -i.bak "/substore:/,/^ *[^ ]/{
+                    /^ *enable:/ s|: .*|: $substore_enable|;
+                }" ./koipy/config.yaml
             else
-                echo -e "substore:\n  enable: $substore_enable\n  autoDeploy: $substore_autoDeploy" >> ./koipy/config.yaml
+                echo -e "substore:\n  enable: $substore_enable" >> ./koipy/config.yaml
+            fi
+            if grep -q "autoDeploy:" ./koipy/config.yaml; then
+                sed -i.bak "s|^\( *autoDeploy: \).*|\1$substore_autoDeploy|" ./koipy/config.yaml
+            else
+                echo "  autoDeploy: $substore_autoDeploy" >> ./koipy/config.yaml
             fi
             echo "config.yaml 已更新。"
         else
@@ -155,30 +156,6 @@ start_docker () {
     echo
 }
 
-data_persistence () {
-    echo "数据持久化可以在升级或重新部署容器时保留配置文件和数据。"
-    printf "请确认是否进行数据持久化操作 [Y/n] :"
-    read -r persistence <&1
-    case $persistence in
-        [yY][eE][sS] | [yY])
-            echo "请确保当前目录下有 koipy 文件夹。"
-            if [ -d "./koipy" ]; then
-                echo "数据持久化操作完成。"
-                echo
-            else
-                echo "缺少必要的配置文件或目录，退出。"
-                exit 1
-            fi
-            ;;
-        [nN][oO] | [nN])
-            echo "结束。"
-            ;;
-        *)
-            echo "输入错误 . . ."
-            ;;
-    esac
-}
-
 start_installation () {
     setup_environment  # 创建文件夹和配置文件
     welcome
@@ -187,7 +164,6 @@ start_installation () {
     build_docker
     configure_bot  # 调用配置 Bot Token 和 API 信息的函数
     start_docker
-    data_persistence
 }
 
 cleanup () {
