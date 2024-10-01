@@ -92,6 +92,13 @@ configure_bot () {
         slave_path=${slave_path:-"/"}
         printf "请输入 Slave Comment(后端展示名):"
         read -r slave_comment <&1
+        printf "是否启用 Sub-Store(默认不启用false):"
+        read -r sub_store_enable <&1
+        sub_store_enable=${sub_store_enable:-"false"}
+        rintf "是否自动部署 Sub-Store(默认不启用false):"
+        read -r sub_store_autoDeploy <&1
+        sub_store_autoDeploy=${sub_store_autoDeploy:-"false"}
+
 
         # 更新 config.yaml 文件
         if [[ -f "./koipy/config.yaml" ]]; then
@@ -114,6 +121,9 @@ configure_bot () {
             sed -i.bak "s|^\(      address: \).*|\1\"$slave_address\"|" ./koipy/config.yaml
             sed -i.bak "s|^\(      path: \).*|\1$slave_path|" ./koipy/config.yaml
             sed -i.bak "s|^\(      comment: \).*|\1\"$slave_comment\"|" ./koipy/config.yaml
+            sed -i.bak "s|^\(  substore:\)|\1|" ./koipy/config.yaml
+            sed -i.bak "s|^\(    enable: \).*|\1\"$sub_store_enable\"|" ./koipy/config.yaml
+            sed -i.bak "s|^\(    autoDeploy: \).*|\1\"$sub_store_autoDeploy\"|" ./koipy/config.yaml
             echo "config.yaml 已更新。"
         else
             echo "缺少必要的配置文件，退出。"
