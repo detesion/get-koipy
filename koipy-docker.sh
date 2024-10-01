@@ -122,8 +122,8 @@ configure_bot () {
             sed -i.bak "s|^\(      path: \).*|\1$slave_path|" ./koipy/config.yaml
             sed -i.bak "s|^\(      comment: \).*|\1\"$slave_comment\"|" ./koipy/config.yaml
             sed -i.bak "s|^\(  substore:\)|\1|" ./koipy/config.yaml
-            sed -i.bak "s|^\(  enable: \).*|\1$substore_enable|" ./koipy/config.yaml
-            sed -i.bak "s|^\(  autoDeploy: \).*|\1$substore_autoDeploy|" ./koipy/config.yaml
+            sed -i.bak "s|^\(    enable: \).*|\1$substore_enable|" ./koipy/config.yaml
+            sed -i.bak "s|^\(    autoDeploy: \).*|\1$substore_autoDeploy|" ./koipy/config.yaml
             echo "config.yaml 已更新。"
         else
             echo "缺少必要的配置文件，退出。"
