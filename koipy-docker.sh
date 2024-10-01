@@ -107,23 +107,27 @@ configure_bot () {
             else
                 echo "license: $license" >> ./koipy/config.yaml
             fi
-            sed -i.bak "s|^\(  bot:\)|\1|" ./koipy/config.yaml
+            # 更新 bot 配置
             sed -i.bak "s|^\(  bot-token: \).*|\1$bot_token|" ./koipy/config.yaml
-            sed -i.bak "s|^\(  api-id: \).*|\1$api_id|" ./koipy/config.yaml
+            sed -i.bak "s|^\(  api-id: \).*|\1\"$api_id\"|" ./koipy/config.yaml  # api-id 使用双引号
             sed -i.bak "s|^\(  api-hash: \).*|\1$api_hash|" ./koipy/config.yaml
             sed -i.bak "s|^\(  proxy: \).*|\1$proxy|" ./koipy/config.yaml
             sed -i.bak "s|^\(  httpProxy: \).*|\1$http_proxy|" ./koipy/config.yaml
             sed -i.bak "s|^\(  socks5Proxy: \).*|\1$socks5_proxy|" ./koipy/config.yaml
-            sed -i.bak "s|^\(  slaveConfig:\)|\1|" ./koipy/config.yaml
+            # 更新 slaveConfig
             sed -i.bak "s|^\(    slave:\)|\1|" ./koipy/config.yaml
             sed -i.bak "s|^\(      id: \).*|\1\"$slave_id\"|" ./koipy/config.yaml
-            sed -i.bak "s|^\(      token: \).*|\1\'$slave_token\'|" ./koipy/config.yaml
+            sed -i.bak "s|^\(      token: \).*|\1'$slave_token'|" ./koipy/config.yaml
             sed -i.bak "s|^\(      address: \).*|\1\"$slave_address\"|" ./koipy/config.yaml
             sed -i.bak "s|^\(      path: \).*|\1$slave_path|" ./koipy/config.yaml
             sed -i.bak "s|^\(      comment: \).*|\1\"$slave_comment\"|" ./koipy/config.yaml
-            sed -i.bak "s|^\(  substore:\)|\1|" ./koipy/config.yaml
-            sed -i.bak "s|^\(    enable: \).*|\1$substore_enable|" ./koipy/config.yaml
-            sed -i.bak "s|^\(    autoDeploy: \).*|\1$substore_autoDeploy|" ./koipy/config.yaml
+            # 更新 substore 配置
+            if grep -q "substore:" ./koipy/config.yaml; then
+                sed -i.bak "s|^\(    enable: \).*|\1$substore_enable|" ./koipy/config.yaml
+                sed -i.bak "s|^\(    autoDeploy: \).*|\1$substore_autoDeploy|" ./koipy/config.yaml
+            else
+                echo -e "substore:\n  enable: $substore_enable\n  autoDeploy: $substore_autoDeploy" >> ./koipy/config.yaml
+            fi
             echo "config.yaml 已更新。"
         else
             echo "缺少必要的配置文件，退出。"
