@@ -95,7 +95,7 @@ configure_bot () {
         printf "是否启用 Sub-Store(默认不启用false):"
         read -r sub_store_enable <&1
         sub_store_enable=${sub_store_enable:-"false"}
-        rintf "是否自动部署 Sub-Store(默认不启用false):"
+        printf "是否自动部署 Sub-Store(默认不启用false):"
         read -r sub_store_autoDeploy <&1
         sub_store_autoDeploy=${sub_store_autoDeploy:-"false"}
 
