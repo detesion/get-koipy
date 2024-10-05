@@ -41,9 +41,9 @@ apt install wget curl ca-certificates
 wget https://raw.githubusercontent.com/detesion/get-koipy/refs/heads/main/koipy-docker.sh -O koipy-docker.sh && chmod +x koipy-docker.sh && bash koipy-docker.sh
 ```
 
-
-
-
+## Star History
+ 
+[![Star History Chart](https://api.star-history.com/svg?repos=detesion/get-koipy&type=Date)](https://star-history.com/#detesion/get-koipy&Date)
 
 <p align="center"> 
   Visitor Count<br>
