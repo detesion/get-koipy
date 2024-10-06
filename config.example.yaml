@@ -293,7 +293,7 @@ subconverter: # 订阅转换
   enable: false # 是否启用
   tls: false # 是否启用安全加密HTTPS协议，如果不知道的话， https 开头就设为true，否则默认false
 substore:
-  enable: true # 是否启用
+  enable: false # 是否启用
   backend: "http://127.0.0.1:3000/download/sub?target=ClashMeta" # 后端地址，bot会自动解析成 http://127.0.0.1:3000/download/sub
   ua: "" # 自定义UA，留空则使用默认UA
   autoDeploy: false # 是否自动部署sub-store，默认true，会自动下载sub-store后端和对应的javascrip运行时(bun)
